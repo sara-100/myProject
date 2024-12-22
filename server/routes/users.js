@@ -3,14 +3,13 @@ var router = express.Router();
 const User = require('../models/user');
 const Product = require('../models/product');
 const authenticate = require('../middleware/authenticate');
-const user = require('../models/user');
+
 
 //פונקציה ששולחת את שם המשתמש
 router.get('/', authenticate, async function (req, res) {
   try {
     const userId = req.user.userId;
-    console.log(userId);
-
+    // console.log(userId);
     const user = await User.findById(userId);
 
     if (!user) {

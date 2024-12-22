@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const Product = require('../models/product');
 const authenticate = require('../middleware/authenticate');
-
+// const { isAdminPassword } = require('../middleware/adminUtils');
 
 
 
@@ -79,9 +79,14 @@ router.post('/', authenticate, async function (req, res) {
   }
 });
 
-
+//מחיקת מודעה
 router.delete('/:id', authenticate, async function (req, res) {
   const productId = req.params.id;
+
+  // const userId = req.user.userId;
+  // const isAdmin = await isAdminPassword(userId);
+
+  // if(isAdmin)
 
   try {
     const product = await Product.findOne({ _id: productId });
